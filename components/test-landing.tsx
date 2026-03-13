@@ -15,7 +15,7 @@ export function TestLanding({ onStart }: TestLandingProps) {
             <Brain className="w-12 h-12 text-white" />
           </div>
           <h1 className="text-5xl md:text-6xl font-bold text-foreground text-balance leading-tight">
-            Psychological Self-Assessment Test
+            Belajar Psikologi Bersama SIPA!!
           </h1>
         </div>
 
