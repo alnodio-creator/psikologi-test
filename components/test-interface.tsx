@@ -8,52 +8,52 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 const QUESTIONS = [
   {
     id: 1,
-    text: 'I often feel overwhelmed by daily responsibilities.',
+    text: 'Apakah didi menyebalkan buat sipa?',
     category: 'stress'
   },
   {
     id: 2,
-    text: 'I have trouble concentrating on tasks for extended periods.',
+    text: 'Apakah didi eeem ada sisi positifnya buat sipa?',
     category: 'focus'
   },
   {
     id: 3,
-    text: 'I feel confident in my ability to handle challenges.',
+    text: 'Didi lucu kan, iya kan. iya kan?',
     category: 'resilience'
   },
   {
     id: 4,
-    text: 'I experience mood swings throughout the day.',
+    text: 'Hehehe apa ya pertanyaan selanjutnya',
     category: 'emotional'
   },
   {
     id: 5,
-    text: 'I maintain healthy relationships with friends and family.',
+    text: 'Apakah didi jahat ? huhuhu',
     category: 'relationships'
   },
   {
     id: 6,
-    text: 'I struggle with anxiety or worry frequently.',
+    text: 'I Love You sipa hehehe',
     category: 'anxiety'
   },
   {
     id: 7,
-    text: 'I feel satisfied with my personal achievements.',
+    text: 'Selamat ulang Tahun sipaa utututu',
     category: 'fulfillment'
   },
   {
     id: 8,
-    text: 'I have difficulty managing my emotions in stressful situations.',
+    text: 'Apakah sudah sesuai ini websitenya? didi baru bisa buat yang sederhana kyk gini',
     category: 'emotional'
   },
   {
     id: 9,
-    text: 'I find it easy to adapt to changes in my life.',
+    text: 'Kalau ada saran let me know okkay',
     category: 'adaptability'
   },
   {
     id: 10,
-    text: 'I feel hopeful about my future.',
+    text: 'lopee lopee !!',
     category: 'outlook'
   }
 ]

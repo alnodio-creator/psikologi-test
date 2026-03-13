@@ -22,12 +22,12 @@ export function TestLanding({ onStart }: TestLandingProps) {
         {/* Description */}
         <div className="space-y-4">
           <p className="text-xl text-muted-foreground leading-relaxed">
-            Discover your psychological profile through a comprehensive self-assessment. 
-            Answer a series of thoughtfully designed questions to gain meaningful insights about yourself.
+            Penguatan Dukungan Psikologis melalui Buku Saku CARE 129 (Compassion Awareness & Recovery for Employees) 
+            sebagai Intervensi Self-Help untuk Mengurangi 
+            Risiko Compassion Fatigue pada Tenaga Layanan Anak SAPA 129 Kementerian PPPA
           </p>
           <p className="text-base text-muted-foreground leading-relaxed">
-            This assessment takes approximately 5-10 minutes to complete. Your responses are confidential 
-            and used only to generate your personalized psychological profile.
+            Gak sampai 5 menit ngisi ini ah elah, ga ribet dah pokoknya -_-
           </p>
         </div>
 
@@ -54,13 +54,13 @@ export function TestLanding({ onStart }: TestLandingProps) {
             size="lg"
             className="bg-linear-to-r from-primary to-accent hover:shadow-lg transition-all duration-300 text-white px-8 py-6 text-lg rounded-lg"
           >
-            Start Assessment
+            Lets Goo didot !
           </Button>
         </div>
 
         {/* Footer note */}
         <p className="text-sm text-muted-foreground italic">
-          This assessment is for self-reflection purposes. Please consult with a mental health professional for clinical evaluation.
+          Asesment ini untuk menilai aja sih, tapi jangan jadi kan patokan okkay, tetep ke psikolog terdekat, contohnya sipa
         </p>
       </div>
     </div>
