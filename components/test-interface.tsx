@@ -28,7 +28,7 @@ const QUESTIONS = [
   },
   {
     id: 5,
-    text: 'Saya merasa sulit memisahkan kehidupan pribadi saya dari kehidupan saya sebagai psikolog klinis?',
+    text: 'Saya merasa sulit memisahkan kehidupan pribadi saya dari kehidupan saya sebagai tenaga layanan anak',
     category: 'Secondary Traumatic Stress'
   },
   {
@@ -43,7 +43,7 @@ const QUESTIONS = [
   },
   {
     id: 8,
-    text: 'Saya merasa terperangkap dalam pekerjaan saya sebagai psikolog klinis ',
+    text: 'Saya merasa terperangkap dalam pekerjaan saya sebagai tenaga layanan anak',
     category: 'Burnout'
   },
   {
@@ -58,7 +58,7 @@ const QUESTIONS = [
   },
   {
     id: 11,
-    text: 'Saya merasa seolah-olah saya mengalami trauma seperti yang klien saya alami.',
+    text: 'Saya merasa seolah-olah saya mengalami trauma seperti yang klien saya alami',
     category: 'Secondary Traumatic Stress'
   },
   {
@@ -73,7 +73,7 @@ const QUESTIONS = [
   },
   {
     id: 14,
-    text: 'Saya merasa sangat lelah dengan pekerjaan saya sebagai psikolog klinis',
+    text: 'Saya merasa sangat lelah dengan pekerjaan saya sebagai tenaga layanan anak',
     category: 'Burnout'
   },
   {
@@ -93,7 +93,7 @@ const QUESTIONS = [
   },
   {
     id: 18,
-    text: 'Saya merasa terperangkap oleh berbagai aspek administratif yang terkait dengan pekerjaan saya sebagai psikolog klinis',
+    text: 'Saya merasa terperangkap oleh berbagai aspek administratif yang terkait dengan pekerjaan saya sebagai tenaga layanan anak',
     category: 'Burnout'
   },
   {
@@ -215,10 +215,10 @@ export function TestInterface({ onComplete, initialScores }: TestInterfaceProps)
                 {valuepertanyaan.map((value,index) => (
                   <button
                     key={index}
-                    onClick={() => handleAnswer(index)}
+                    onClick={() => handleAnswer(value.id)}
                     className={`
                        w-20 h-15 rounded-lg font-bold text-sm transition-all duration-200
-                      ${scores[currentQuestion] === index
+                      ${scores[currentQuestion] === value.id
                         ? 'bg-linear-to-br from-primary to-accent text-white shadow-lg scale-110'
                         : 'bg-muted text-muted-foreground hover:bg-primary/20 hover:text-primary'
                       }
