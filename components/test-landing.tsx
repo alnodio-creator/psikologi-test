@@ -17,7 +17,7 @@ export function TestLanding({ onStart }: TestLandingProps) {
           <h1 className="text-5xl md:text-6xl font-bold text-foreground text-balance leading-tight">
             CARE 129 
           </h1>
-          <h2 className="text-5xl md:text-5xl font-bold text-foreground text-balance leading-tight">(Compassion Awareness & Recovery for Employees)</h2>
+          <h2 className="text-5xl md:text-4xl font-bold italic text-foreground text-balance leading-tight">(Compassion Awareness & Recovery for Employees)</h2>
         </div>
 
         {/* Description */}
