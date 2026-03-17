@@ -113,6 +113,31 @@ interface TestInterfaceProps {
   initialScores: number[]
 }
 
+
+const valuepertanyaan = [
+  {
+    id : 1,
+    value: "Tidak Pernah"
+},
+  {
+    id : 2,
+    value: "Jarang"
+},
+  {
+    id : 3,
+    value: "Kadang-kadang"
+},
+  {
+    id : 4,
+    value: "Sering"
+},
+  {
+    id : 5,
+    value: "Sangat Sering"
+},
+
+]
+
 export function TestInterface({ onComplete, initialScores }: TestInterfaceProps) {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [scores, setScores] = useState(initialScores)
@@ -186,26 +211,28 @@ export function TestInterface({ onComplete, initialScores }: TestInterfaceProps)
               <p className="text-sm font-medium text-muted-foreground text-center">
                 Rate your response on a scale from 1 to 5
               </p>
-              <div className="flex gap-2 justify-center">
-                {[1, 2, 3, 4, 5].map((value) => (
+              <div className="flex gap-10 justify-center">
+                {valuepertanyaan.map((value,index) => (
                   <button
-                    key={value}
-                    onClick={() => handleAnswer(value)}
+                    key={index}
+                    onClick={() => handleAnswer(index)}
                     className={`
-                      w-12 h-12 rounded-lg font-bold text-sm transition-all duration-200
-                      ${scores[currentQuestion] === value
+                       w-20 h-15 rounded-lg font-bold text-sm transition-all duration-200
+                      ${scores[currentQuestion] === index
                         ? 'bg-linear-to-br from-primary to-accent text-white shadow-lg scale-110'
                         : 'bg-muted text-muted-foreground hover:bg-primary/20 hover:text-primary'
                       }
                     `}
                   >
-                    {value}
+                    <p className='text-center'>{value.id}</p>
+                    <span className='text-center'>{value.value}</span>
+
                   </button>
                 ))}
               </div>
               <div className="flex justify-between text-xs text-muted-foreground px-1 mt-2">
-                <span>Strongly Disagree</span>
-                <span>Strongly Agree</span>
+                <span>Tidak Pernah</span>
+                <span>Sangat Sering</span>
               </div>
             </div>
           </div>
