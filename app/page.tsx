@@ -10,7 +10,7 @@ export default function Page() {
   const [scores, setScores] = useState<number[]>([])
 
   const handleStartTest = () => {
-    setScores(new Array(10).fill(0))
+    setScores(new Array(20).fill(0))
     setTestState('test')
   }
 

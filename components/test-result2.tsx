@@ -17,9 +17,10 @@ export function TestResults({ scores, onRetake }: TestResultsProps) {
 
   // Determine score interpretation
   const getInterpretation = () => {
-    if (totalScore <= 22) return { level: 'Low', color: 'text-destructive', bgColor: 'bg-destructive/10', description: 'You may be experiencing significant challenges. Consider seeking support from a mental health professional.' }
-    if (totalScore <= 41) return { level: 'Moderate', color: 'text-yellow-600', bgColor: 'bg-yellow-100', description: 'You show some areas of concern. Building healthy coping strategies could be beneficial.' }
-    return { level: 'High', color: 'text-green-600', bgColor: 'bg-green-100', description: 'You show strong psychological resilience and well-being across multiple areas.' }
+    if (totalScore <= 17) return { level: 'Low', color: 'text-destructive', bgColor: 'bg-destructive/10', description: 'You may be experiencing significant challenges. Consider seeking support from a mental health professional.' }
+    if (totalScore <= 25) return { level: 'Moderate', color: 'text-yellow-600', bgColor: 'bg-yellow-100', description: 'You show some areas of concern. Building healthy coping strategies could be beneficial.' }
+    if (totalScore <= 34) return { level: 'Good', color: 'text-blue-600', bgColor: 'bg-blue-100', description: 'You demonstrate good psychological well-being with room for growth.' }
+    return { level: 'Excellent', color: 'text-green-600', bgColor: 'bg-green-100', description: 'You show strong psychological resilience and well-being across multiple areas.' }
   }
 
   const interpretation = getInterpretation()
@@ -31,35 +32,11 @@ export function TestResults({ scores, onRetake }: TestResultsProps) {
   }))
 
   const categoryScores = [
-  {
-    name: 'Burnout',
-    value:
-      scores[0] +
-      scores[2] +
-      scores[5] +
-      scores[7] +
-      scores[11] +
-      scores[12] +
-      scores[13] +
-      scores[14] +
-      scores[17] +
-      scores[19]
-  },
-  {
-    name: 'Secondary Traumatic Stress',
-    value:
-      scores[1] +
-      scores[3] +
-      scores[4] +
-      scores[6] +
-      scores[8] +
-      scores[9] +
-      scores[10] +
-      scores[15] +
-      scores[16] +
-      scores[18]
-  }
-]
+    { name: 'Stress Level', value: scores[0] + scores[3] },
+    { name: 'Resilience', value: scores[2] + scores[8] },
+    { name: 'Emotional Health', value: scores[4] + scores[6] },
+    { name: 'Positive Outlook', value: scores[9] + (scores[1] > 3 ? 5 : scores[1]) }
+  ]
 
   const COLORS = ['#3b82f6', '#06b6d4', '#8b5cf6', '#ec4899']
 
@@ -152,7 +129,7 @@ export function TestResults({ scores, onRetake }: TestResultsProps) {
                 <div key={index} className="space-y-1">
                   <div className="flex justify-between items-center">
                     <span className="text-sm font-medium text-foreground">{category.name}</span>
-                    <span className="text-sm font-bold text-primary">{category.value}/50</span>
+                    <span className="text-sm font-bold text-primary">{category.value}/10</span>
                   </div>
                   <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
                     <div 
@@ -186,24 +163,6 @@ export function TestResults({ scores, onRetake }: TestResultsProps) {
                 <Tooltip formatter={(value) => `${value} points`} />
               </PieChart>
             </ResponsiveContainer>
-          </Card>
-
-          {/* Interpretation Card */}
-          <Card className={`p-6 shadow-lg border-0 rounded-xl text-center ${interpretation.bgColor}`}>
-            <p className="text-sm font-semibold text-muted-foreground mb-2">Burnout Score</p>
-            <p className={`text-5xl font-bold ${interpretation.color}`}>
-              {interpretation.level}
-            </p>
-            <p className="text-xs text-foreground/70 mt-2">Based on your responses</p>
-          </Card>
-
-          {/* Interpretation Card */}
-          <Card className={`p-6 shadow-lg border-0 rounded-xl text-center ${interpretation.bgColor}`}>
-            <p className="text-sm font-semibold text-muted-foreground mb-2">Secondary Traumatic Stress Score</p>
-            <p className={`text-5xl font-bold ${interpretation.color}`}>
-              {interpretation.level}
-            </p>
-            <p className="text-xs text-foreground/70 mt-2">Based on your responses</p>
           </Card>
         </div>
 

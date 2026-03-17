@@ -8,53 +8,103 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 const QUESTIONS = [
   {
     id: 1,
-    text: 'Apakah didi menyebalkan buat sipa?',
-    category: 'stress'
+    text: 'Saya Bahagia',
+    category: 'Burnout'
   },
   {
     id: 2,
-    text: 'Apakah didi eeem ada sisi positifnya buat sipa?',
-    category: 'focus'
+    text: 'Saya sangat disibukkan oleh lebih dari satu klien',
+    category: 'Secondary Traumatic Stress'
   },
   {
     id: 3,
-    text: 'Didi lucu kan, iya kan. iya kan?',
-    category: 'resilience'
+    text: 'Saya merasa terhubung dengan orang lain',
+    category: 'Burnout'
   },
   {
     id: 4,
-    text: 'Hehehe apa ya pertanyaan selanjutnya',
-    category: 'emotional'
+    text: 'Saya kaget atau terkejut oleh suara-suara yang tidak terduga',
+    category: 'Secondary Traumatic Stress'
   },
   {
     id: 5,
-    text: 'Apakah didi jahat ? huhuhu',
-    category: 'relationships'
+    text: 'Saya merasa sulit memisahkan kehidupan pribadi saya dari kehidupan saya sebagai psikolog klinis?',
+    category: 'Secondary Traumatic Stress'
   },
   {
     id: 6,
-    text: 'I Love You sipa hehehe',
-    category: 'anxiety'
+    text: 'Saya menjadi kurang produktif dalam bekerja karena kurang tidur akibat terlalu memikirkan pengalaman traumatis klien saya',
+    category: 'Burnout'
   },
   {
     id: 7,
-    text: 'Selamat ulang Tahun sipaa utututu',
-    category: 'fulfillment'
+    text: 'Sepertinya saya telah terpengaruh oleh tekanan traumatis dari klien saya ',
+    category: 'Secondary Traumatic Stress'
   },
   {
     id: 8,
-    text: 'Apakah sudah sesuai ini websitenya? didi baru bisa buat yang sederhana kyk gini',
-    category: 'emotional'
+    text: 'Saya merasa terperangkap dalam pekerjaan saya sebagai psikolog klinis ',
+    category: 'Burnout'
   },
   {
     id: 9,
-    text: 'Kalau ada saran let me know okkay',
-    category: 'adaptability'
+    text: 'Pekerjaan saya dalam membantu klien membuat saya merasa tegang mengenai berbagai hal',
+    category: 'Secondary Traumatic Stress'
   },
   {
     id: 10,
-    text: 'lopee lopee !!',
-    category: 'outlook'
+    text: 'Saya merasa sangat tertekan karena pengalaman traumatis klien-klien yang saya bantu',
+    category: 'Secondary Traumatic Stress'
+  },
+  {
+    id: 11,
+    text: 'Saya merasa seolah-olah saya mengalami trauma seperti yang klien saya alami.',
+    category: 'Secondary Traumatic Stress'
+  },
+  {
+    id: 12,
+    text: 'Saya memiliki keyakinan atau nilai-nilai yang membuat saya bertahan dalam pekerjaan ini',
+    category: 'Burnout'
+  },
+  {
+    id: 13,
+    text: 'Saya telah menjadi seseorang yang selalu saya inginkan',
+    category: 'Burnout'
+  },
+  {
+    id: 14,
+    text: 'Saya merasa sangat lelah dengan pekerjaan saya sebagai psikolog klinis',
+    category: 'Burnout'
+  },
+  {
+    id: 15,
+    text: 'Saya merasa kewalahan karena beban pekerjaan saya seperti tidak ada habisnya',
+    category: 'Burnout'
+  },
+  {
+    id: 16,
+    text: 'Saya menghindari situasi tertentu karena hal itu  mengingatkan saya terhadap pengalaman klien saya',
+    category: 'Secondary Traumatic Stress'
+  },
+  {
+    id: 17,
+    text: 'Sebagai akibat dari bantuan saya yang saya berikan, saya memiliki  pikiran-pikiran yang mengganggu dan menakutkan',
+    category: 'Secondary Traumatic Stress'
+  },
+  {
+    id: 18,
+    text: 'Saya merasa terperangkap oleh berbagai aspek administratif yang terkait dengan pekerjaan saya sebagai psikolog klinis',
+    category: 'Burnout'
+  },
+  {
+    id: 19,
+    text: 'Saya tidak dapat mengingat bagian-bagian penting dari pekerjaan saya yang berhubungan dengan korban trauma',
+    category: 'Secondary Traumatic Stress'
+  },
+  {
+    id: 20,
+    text: 'Saya orang yang sangat perhatian',
+    category: 'Burnout'
   }
 ]
 
@@ -66,6 +116,7 @@ interface TestInterfaceProps {
 export function TestInterface({ onComplete, initialScores }: TestInterfaceProps) {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [scores, setScores] = useState(initialScores)
+  // Score ini bentuknya [] jadi bisa score[1] artinya sudah dijawab 1 
 
   const progress = ((currentQuestion + 1) / QUESTIONS.length) * 100
   const isAnswered = scores[currentQuestion] !== 0
@@ -102,7 +153,7 @@ export function TestInterface({ onComplete, initialScores }: TestInterfaceProps)
         {/* Progress Section */}
         <div className="space-y-3">
           {/* Progress Bar */}
-          <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
+          <div className="w-full h-4 bg-muted rounded-full overflow-hidden">
             <div 
               className="h-full bg-linear-to-r from-primary to-accent transition-all duration-500 ease-out"
               style={{ width: `${progress}%` }}
@@ -114,15 +165,15 @@ export function TestInterface({ onComplete, initialScores }: TestInterfaceProps)
             <h2 className="text-sm font-semibold text-muted-foreground">
               Question {currentQuestion + 1} of {QUESTIONS.length}
             </h2>
-            <span className="text-xs text-muted-foreground font-medium">
-              {Math.round(progress)}% Complete
-            </span>
+            <h2 className="text-xs text-muted-foreground font-medium">
+              {(progress)}% Complete
+            </h2>
           </div>
         </div>
 
         {/* Question Card */}
-        <Card className="p-8 shadow-lg border-0 bg-white rounded-xl animate-scaleIn">
-          <div className="space-y-8">
+        <Card className="p-10 shadow-lg border-0 bg-white rounded-xl animate-scaleIn">
+          <div className="space-y-6">
             {/* Question Text */}
             <div>
               <p className="text-2xl font-semibold text-foreground text-balance leading-relaxed">
