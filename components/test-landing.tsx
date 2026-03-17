@@ -15,26 +15,24 @@ export function TestLanding({ onStart }: TestLandingProps) {
             <Brain className="w-12 h-12 text-white" />
           </div>
           <h1 className="text-5xl md:text-6xl font-bold text-foreground text-balance leading-tight">
-            Belajar Psikologi Bersama SIPA!!
+            CARE 129 
           </h1>
+          <h2 className="text-5xl md:text-5xl font-bold text-foreground text-balance leading-tight">(Compassion Awareness & Recovery for Employees)</h2>
         </div>
 
         {/* Description */}
         <div className="space-y-4">
-          <p className="text-xl text-muted-foreground leading-relaxed">
-            Penguatan Dukungan Psikologis melalui Buku Saku CARE 129 (Compassion Awareness & Recovery for Employees) 
-            sebagai Intervensi Self-Help untuk Mengurangi 
-            Risiko Compassion Fatigue pada Tenaga Layanan Anak SAPA 129 Kementerian PPPA
+          <p className="text-xl font-bold text-blue-950 leading-relaxed">
+            Di balik kepedulianmu untuk orang lain, CARE 129 hadir untuk merawatmu. 
+            Mari meluangkan waktu sejenak untuk memahami dan menjaga kesehatan mentalmu.
           </p>
-          <p className="text-base text-muted-foreground leading-relaxed">
-            Gak sampai 5 menit ngisi ini ah elah, ga ribet dah pokoknya -_-
-          </p>
+          
         </div>
 
         {/* Features */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-8">
           <div className="p-4 rounded-lg bg-white shadow-sm border border-border">
-            <div className="text-2xl font-bold text-primary mb-2">10</div>
+            <div className="text-2xl font-bold text-primary mb-2">20</div>
             <p className="text-sm text-muted-foreground">Comprehensive Questions</p>
           </div>
           <div className="p-4 rounded-lg bg-white shadow-sm border border-border">
@@ -54,13 +52,13 @@ export function TestLanding({ onStart }: TestLandingProps) {
             size="lg"
             className="bg-linear-to-r from-primary to-accent hover:shadow-lg transition-all duration-300 text-white px-8 py-6 text-lg rounded-lg"
           >
-            Lets Goo didot !
+            Mulai Assessment 
           </Button>
         </div>
 
         {/* Footer note */}
-        <p className="text-sm text-muted-foreground italic">
-          Asesment ini untuk menilai aja sih, tapi jangan jadi kan patokan okkay, tetep ke psikolog terdekat, contohnya sipa
+        <p className="text-lg text-muted-foreground italic">
+          Asesmen ini merupakan skrining awal untuk membantu mengenali kondisi psikologismu dan tidak menggantikan diagnosis profesional.
         </p>
       </div>
     </div>
