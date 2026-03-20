@@ -58,7 +58,7 @@ export function TestLanding({ onStart }: TestLandingProps) {
 
         {/* Footer note */}
         <p className="text-lg text-muted-foreground italic">
-          Asesmen ini merupakan skrining awal untuk membantu mengenali kondisi psikologismu dan tidak menggantikan diagnosis profesional.
+          Asesmen ini merupakan skrining awal untuk membantu mengenali kondisi psikologis dan tidak menggantikan diagnosis profesional.
         </p>
       </div>
     </div>
