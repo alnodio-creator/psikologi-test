@@ -13,7 +13,7 @@ const QUESTIONS = [
   },
   {
     id: 2,
-    text: 'Saya sangat disibukkan oleh lebih dari satu Korban/Kasus',
+    text: 'Saya sangat disibukkan oleh lebih dari satu korban/kasus',
     category: 'Secondary Traumatic Stress'
   },
   {
@@ -33,12 +33,12 @@ const QUESTIONS = [
   },
   {
     id: 6,
-    text: 'Saya menjadi kurang produktif dalam bekerja karena kurang tidur akibat terlalu memikirkan pengalaman traumatis Korban/Kasus saya',
+    text: 'Saya menjadi kurang produktif dalam bekerja karena kurang tidur akibat terlalu memikirkan pengalaman traumatis korban/kasus saya',
     category: 'Burnout'
   },
   {
     id: 7,
-    text: 'Sepertinya saya telah terpengaruh oleh tekanan traumatis dari Korban/Kasus saya ',
+    text: 'Sepertinya saya telah terpengaruh oleh tekanan traumatis dari korban/kasus saya ',
     category: 'Secondary Traumatic Stress'
   },
   {
@@ -48,17 +48,17 @@ const QUESTIONS = [
   },
   {
     id: 9,
-    text: 'Pekerjaan saya dalam membantu Korban/Kasus membuat saya merasa tegang mengenai berbagai hal',
+    text: 'Pekerjaan saya dalam membantu korban membuat saya merasa tegang mengenai berbagai hal',
     category: 'Secondary Traumatic Stress'
   },
   {
     id: 10,
-    text: 'Saya merasa sangat tertekan karena pengalaman traumatis Korban/Kasus-Korban/Kasus yang saya bantu',
+    text: 'Saya merasa sangat tertekan karena pengalaman traumatis korban-korban yang saya bantu',
     category: 'Secondary Traumatic Stress'
   },
   {
     id: 11,
-    text: 'Saya merasa seolah-olah saya mengalami trauma seperti yang Korban/Kasus saya alami',
+    text: 'Saya merasa seolah-olah saya mengalami trauma seperti yang korban/kasus saya alami',
     category: 'Secondary Traumatic Stress'
   },
   {
@@ -83,12 +83,12 @@ const QUESTIONS = [
   },
   {
     id: 16,
-    text: 'Saya menghindari situasi tertentu karena hal itu  mengingatkan saya terhadap pengalaman Korban/Kasus saya',
+    text: 'Saya menghindari situasi tertentu karena hal itu  mengingatkan saya terhadap pengalaman korban/kasus saya',
     category: 'Secondary Traumatic Stress'
   },
   {
     id: 17,
-    text: 'Sebagai akibat dari bantuan saya yang saya berikan, saya memiliki  pikiran-pikiran yang mengganggu dan menakutkan',
+    text: 'Sebagai akibat dari bantuan saya yang saya berikan, saya memiliki pikiran-pikiran yang mengganggu dan menakutkan',
     category: 'Secondary Traumatic Stress'
   },
   {
