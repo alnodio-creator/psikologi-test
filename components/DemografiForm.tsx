@@ -24,6 +24,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { SyntheticEvent, useState } from "react";
 import { Brain } from "lucide-react";
+import { useTestStore } from "@/store/setScore";
 
 const StatusMarriages = [
   "Belum Menikah",
@@ -64,17 +65,27 @@ const DemografiForm = ({ onStart }: TestLandingProps) => {
   const [marriage, setMarriage] = useState("");
   const [job, setJob] = useState("");
 
+  const setDemografiForm = useTestStore((state) => state.setDemografi);
+
   const HandleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-    if (!phone) return alert("isi phone terlebih dahulu")
-    if (!name) return alert("isi name terlebih dahulu")
-    if (!gender) return alert("isi gender terlebih dahulu")
-    if (!age) return alert("isi age terlebih dahulu")
-    if (!marriage) return alert("isi marriage terlebih dahulu")
-    if (!job) return alert("isi job terlebih dahulu")
-    onStart()
-  }
-  
+    if (!phone) return alert("isi phone terlebih dahulu");
+    if (!name) return alert("isi name terlebih dahulu");
+    if (!gender) return alert("isi gender terlebih dahulu");
+    if (!age) return alert("isi age terlebih dahulu");
+    if (!marriage) return alert("isi marriage terlebih dahulu");
+    if (!job) return alert("isi job terlebih dahulu");
+    setDemografiForm({
+      name,
+      phone,
+      gender,
+      age,
+      marriage,
+      job,
+    });
+
+    onStart();
+  };
 
   // const isValid = name && gender && age && marriage && job;
   return (
@@ -105,8 +116,8 @@ const DemografiForm = ({ onStart }: TestLandingProps) => {
                       Nama Lengkap
                     </FieldLabel>
                     <Input
-                    value={name}
-                    onChange={((e) => setName(e.target.value))}
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
                       id="checkout-7j9-card-name-43j"
                       placeholder="Masukkan Nama Anda"
                       required
@@ -131,9 +142,11 @@ const DemografiForm = ({ onStart }: TestLandingProps) => {
                   </Field>
                   <Field>
                     <FieldLabel>Jenis Kelamin</FieldLabel>
-                    <Select required
-                    value={gender}
-                    onValueChange={((value) => setGender(value))}>
+                    <Select
+                      required
+                      value={gender}
+                      onValueChange={(value) => setGender(value)}
+                    >
                       <SelectTrigger className="w-full">
                         <SelectValue placeholder="Jenis Kelamin" />
                       </SelectTrigger>
@@ -149,9 +162,11 @@ const DemografiForm = ({ onStart }: TestLandingProps) => {
                   </Field>
                   <Field>
                     <FieldLabel>Usia Anda</FieldLabel>
-                    <Select required
-                    value={age}
-                    onValueChange={((value) => setAge(value))}>
+                    <Select
+                      required
+                      value={age}
+                      onValueChange={(value) => setAge(value)}
+                    >
                       <SelectTrigger className="w-full">
                         <SelectValue placeholder="Usia Anda" />
                       </SelectTrigger>
@@ -170,9 +185,11 @@ const DemografiForm = ({ onStart }: TestLandingProps) => {
                   </Field>
                   <Field>
                     <FieldLabel>Status Pernikahan</FieldLabel>
-                    <Select required
-                    value={marriage}
-                    onValueChange={((value) => setMarriage(value))}>
+                    <Select
+                      required
+                      value={marriage}
+                      onValueChange={(value) => setMarriage(value)}
+                    >
                       <SelectTrigger className="w-full">
                         <SelectValue placeholder="Status Pernikahan Anda" />
                       </SelectTrigger>
@@ -195,9 +212,11 @@ const DemografiForm = ({ onStart }: TestLandingProps) => {
                   </Field>
                   <Field>
                     <FieldLabel>Jenis Jabatan</FieldLabel>
-                    <Select required
-                    value={job}
-                    onValueChange={((value) => setJob(value))}>
+                    <Select
+                      required
+                      value={job}
+                      onValueChange={(value) => setJob(value)}
+                    >
                       <SelectTrigger className="w-full">
                         <SelectValue placeholder="Jabatan" />
                       </SelectTrigger>
@@ -236,10 +255,7 @@ const DemografiForm = ({ onStart }: TestLandingProps) => {
                 </FieldGroup>
               </FieldSet>
               <Field orientation="horizontal">
-                <Button 
-                type="submit">
-                  Submit
-                </Button>
+                <Button type="submit">Submit</Button>
                 <Button variant="outline" type="button">
                   Cancel
                 </Button>
