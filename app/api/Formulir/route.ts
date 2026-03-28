@@ -4,8 +4,9 @@ import {prisma} from '@/lib/prisma'
 
 export async function POST (req: Request) {
     try{
-        const body = await req.json()
+    const body = await req.json()
     const {demografi, scores} = body
+    console.log("BODY:", body); // 👈 lihat ini di Vercel
 
     const Result = await prisma.testResult.create({
         data: {
