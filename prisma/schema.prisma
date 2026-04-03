@@ -15,11 +15,12 @@ datasource db {
 model TestResult {
   id Int @id @default(autoincrement())
   name String
-  Phone String
   Age String
   Gender String
   Marriage String
   Job String
+  Lamakerja String @default("")
+  JumlahCase String @default("")
   Scores Json // Json yang menyimpan Array
   CreatedAtt DateTime @default(now())
 }

@@ -14,6 +14,8 @@ export default function Page() {
   const route = useRouter();
   const demografi = useTestStore((state) => state.demografi);
 
+ 
+
   const HandleStartTest = () => {
     setScore(new Array(20).fill(0));
     setTestState("test");

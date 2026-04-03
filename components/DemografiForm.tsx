@@ -21,7 +21,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
 import { SyntheticEvent, useState } from "react";
 import { Brain } from "lucide-react";
 import { useTestStore } from "@/store/setScore";
@@ -43,14 +42,28 @@ const UsiaResponden = [
 
 const jenisJabatan = [
   { label: "Advokat", value: "advokat" },
-  { label: "Konselor hukum", value: "konselor_hukum" },
+  { label: "Konselor hukum", value: "konselor hukum" },
   { label: "Paralegal", value: "paralegal" },
   { label: "Mediator", value: "mediator" },
   { label: "Konselor", value: "konselor" },
-  { label: "Psikolog Klinis", value: "psikolog_klinis" },
-  { label: "Manajer Kasus", value: "manajer_kasus" },
-  { label: "Pekerja Sosial", value: "pekerja_sosial" },
+  { label: "Psikolog Klinis", value: "psikolog klinis" },
+  { label: "Manajer Kasus", value: "manajer kasus" },
+  { label: "Pekerja Sosial", value: "pekerja sosial" },
   { label: "Penerima Pengaduan (Operator)", value: "operator" },
+];
+
+const lamaBekerja = [
+  { label: "< 1 tahun", value: "kurang dari 1 tahun" },
+  { label: "1-2 tahun", value: "1 2 tahun" },
+  { label: "3-5 tahun", value: "3 5 tahun" },
+  { label: "> 5 tahun", value: "lebih dari 5 tahun" },
+];
+
+const jumlahCase = [
+  { label: "< 5 kasus", value: "<5" },
+  { label: "5-10 kasus", value: "5-10" },
+  { label: "10-15 kasus", value: "10-15" },
+  { label: "> 20 kasus", value: ">20" },
 ];
 
 interface TestLandingProps {
@@ -58,30 +71,33 @@ interface TestLandingProps {
 }
 
 const DemografiForm = ({ onStart }: TestLandingProps) => {
-  const [phone, setPhone] = useState("");
   const [name, setName] = useState("");
   const [gender, setGender] = useState("");
   const [age, setAge] = useState("");
   const [marriage, setMarriage] = useState("");
   const [job, setJob] = useState("");
+  const [lamakerja, setLamakerja] = useState("");
+  const [jumlahcase, setJumlahcase] = useState("");
 
   const setDemografiForm = useTestStore((state) => state.setDemografi);
 
   const HandleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-    if (!phone) return alert("isi phone terlebih dahulu");
     if (!name) return alert("isi name terlebih dahulu");
     if (!gender) return alert("isi gender terlebih dahulu");
     if (!age) return alert("isi age terlebih dahulu");
     if (!marriage) return alert("isi marriage terlebih dahulu");
     if (!job) return alert("isi job terlebih dahulu");
+    if (!lamakerja) return alert("isi lamakerja terlebih dahulu");
+    if (!jumlahcase) return alert("isi jumlahcase terlebih dahulu");
     setDemografiForm({
       name,
-      phone,
       gender,
       age,
       marriage,
       job,
+      lamakerja,
+      jumlahcase,
     });
 
     onStart();
@@ -124,23 +140,6 @@ const DemografiForm = ({ onStart }: TestLandingProps) => {
                     />
                   </Field>
                   <Field>
-                    <FieldLabel htmlFor="checkout-7j9-card-number-uw1">
-                      Nomor Telepon
-                    </FieldLabel>
-                    <Input
-                      value={phone}
-                      onChange={(e) => {
-                        const value = e.target.value.replace(/\D/g, ""); // hapus selain angka
-                        if (value.length <= 12) {
-                          setPhone(value);
-                        }
-                      }}
-                      placeholder="081xxxxxxxxx"
-                      required
-                    />
-                    <FieldDescription>Masukan Nomor Telepon</FieldDescription>
-                  </Field>
-                  <Field>
                     <FieldLabel>Jenis Kelamin</FieldLabel>
                     <Select
                       required
@@ -158,7 +157,6 @@ const DemografiForm = ({ onStart }: TestLandingProps) => {
                         </SelectGroup>
                       </SelectContent>
                     </Select>
-                    <FieldDescription>Pilih Jenis Kelamin</FieldDescription>
                   </Field>
                   <Field>
                     <FieldLabel>Usia Anda</FieldLabel>
@@ -180,7 +178,6 @@ const DemografiForm = ({ onStart }: TestLandingProps) => {
                           ))}
                         </SelectGroup>
                       </SelectContent>
-                      <FieldDescription>Pilih Usia Anda</FieldDescription>
                     </Select>
                   </Field>
                   <Field>
@@ -205,9 +202,6 @@ const DemografiForm = ({ onStart }: TestLandingProps) => {
                           })}
                         </SelectGroup>
                       </SelectContent>
-                      <FieldDescription>
-                        Pilih Status Pernikahan
-                      </FieldDescription>
                     </Select>
                   </Field>
                   <Field>
@@ -232,27 +226,56 @@ const DemografiForm = ({ onStart }: TestLandingProps) => {
                           })}
                         </SelectGroup>
                       </SelectContent>
-                      <FieldDescription>
-                        Pilih Jenis Jabatan Anda
-                      </FieldDescription>
+                    </Select>
+                  </Field>
+                  <Field>
+                    <FieldLabel>Lama Bekerja</FieldLabel>
+                    <Select
+                      required
+                      value={lamakerja}
+                      onValueChange={(value) => setLamakerja(value)}
+                    >
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Lama Bekerja" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectGroup className="z-900">
+                          <SelectLabel>Pilih Lama Bekerja</SelectLabel>
+                          {lamaBekerja.map((value, index) => (
+                            <SelectItem key={index} value={value.value}>
+                              {value.label}
+                            </SelectItem>
+                          ))}
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
+                  </Field>
+                  <Field>
+                    <FieldLabel>Rata-rata jumlah kasus yang ditangani dalam 1 bulan</FieldLabel>
+                    <Select
+                      required
+                      value={jumlahcase}
+                      onValueChange={(value) => setJumlahcase(value)}
+                    >
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Rata-rata jumlah kasus" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectGroup className="z-900">
+                          <SelectLabel>Rata-rata jumlah kasus yang ditangani</SelectLabel>
+                          {jumlahCase.map((value, index) => (
+                            <SelectItem key={index} value={value.value}>
+                              {value.label}
+                            </SelectItem>
+                          ))}
+                        </SelectGroup>
+                      </SelectContent>
                     </Select>
                   </Field>
                 </FieldGroup>
               </FieldSet>
               <FieldSeparator />
               <FieldSet>
-                <FieldGroup>
-                  <Field>
-                    <FieldLabel htmlFor="checkout-7j9-optional-comments">
-                      Comments
-                    </FieldLabel>
-                    <Textarea
-                      id="checkout-7j9-optional-comments"
-                      placeholder="Add any additional comments"
-                      className="resize-none"
-                    />
-                  </Field>
-                </FieldGroup>
               </FieldSet>
               <Field orientation="horizontal">
                 <Button type="submit">Submit</Button>

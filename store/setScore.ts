@@ -2,11 +2,12 @@ import { create } from 'zustand'
 
 interface Demografi {
   name: string
-  phone: string
   gender: string
   age: string
   marriage: string
   job: string
+  lamakerja: string
+  jumlahcase: string
 }
 
 interface TestState {

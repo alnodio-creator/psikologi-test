@@ -18,10 +18,9 @@ import { CheckCircle2, TrendingUp } from "lucide-react";
 
 interface TestResultsProps {
   scores: number[];
-  onRetake: () => void;
 }
 
-export function TestResults({ scores, onRetake }: TestResultsProps) {
+export function HasilTabel({ scores}: TestResultsProps) {
   const totalScore = scores.reduce((a, b) => a + b, 0);
   
  
@@ -106,63 +105,6 @@ export function TestResults({ scores, onRetake }: TestResultsProps) {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-4 py-8 bg-linear-to-r from-background via-blue-50 to-blue-100">
       <div className="w-full max-w-4xl space-y-8 animate-fadeInUp">
-        {/* Header */}
-        <div className="text-center space-y-4">
-          <div className="flex justify-center">
-            <div className="p-3 rounded-full bg-linear-to-r from-primary to-accent shadow-lg animate-pulse">
-              <CheckCircle2 className="w-10 h-10 text-white" />
-            </div>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground">
-            Your Results
-          </h1>
-          <p className="text-lg text-muted-foreground">
-            Assessment completed successfully
-          </p>
-        </div>
-
-        {/* Score Summary */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {/* Total Score Card */}
-          {/* <Card className="p-6 shadow-lg border-0 bg-white rounded-xl text-center">
-            <p className="text-sm font-semibold text-muted-foreground mb-2">
-              Total Score
-            </p>
-            <p className="text-5xl font-bold bg-linear-to-r from-primary to-accent bg-clip-text text-transparent">
-              {totalScore}/{maxScore}
-            </p>
-            <p className="text-xs text-muted-foreground mt-2">Out of maximum</p>
-          </Card> */}
-
-          {/* Percentage Card */}
-          {/* <Card className="p-6 shadow-lg border-0 bg-white rounded-xl text-center">
-            <p className="text-sm font-semibold text-muted-foreground mb-2">
-              Completion Rate
-            </p>
-            <p className="text-5xl font-bold text-primary">{percentage}%</p>
-            <div className="w-full h-2 bg-muted rounded-full mt-3 overflow-hidden">
-              <div
-                className="h-full bg-linear-to-r from-primary to-accent transition-all duration-1000"
-                style={{ width: `${percentage}%` }}
-              />
-            </div>
-          </Card> */}
-
-          {/* Interpretation Card */}
-          {/* <Card
-            className={`p-6 shadow-lg border-0 rounded-xl text-center ${interpretation.bgColor}`}
-          >
-            <p className="text-sm font-semibold text-muted-foreground mb-2">
-              Assessment Level
-            </p>
-            <p className={`text-5xl font-bold ${interpretation.color}`}>
-              {interpretation.level}
-            </p>
-            <p className="text-xs text-foreground/70 mt-2">
-              Based on your responses
-            </p>
-          </Card> */}
-        </div>
 
         {/* Main Visualization */}
         <Card className="px-6 py-10 shadow-lg border-0 bg-white rounded-xl">
@@ -321,13 +263,6 @@ export function TestResults({ scores, onRetake }: TestResultsProps) {
 
         {/* Action Buttons */}
         <div className="flex gap-3 justify-center">
-          <Button
-            onClick={onRetake}
-            size="lg"
-            className="bg-linear-to-r from-primary to-accent hover:shadow-lg text-white px-8"
-          >
-            Retake Assessment
-          </Button>
           <Button variant="outline" size="lg" className="px-8">
             Share Results
           </Button>
