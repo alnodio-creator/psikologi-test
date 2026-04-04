@@ -54,8 +54,8 @@ const jenisJabatan = [
 
 const lamaBekerja = [
   { label: "< 1 tahun", value: "kurang dari 1 tahun" },
-  { label: "1-2 tahun", value: "1 2 tahun" },
-  { label: "3-5 tahun", value: "3 5 tahun" },
+  { label: "1-2 tahun", value: "12 tahun" },
+  { label: "3-5 tahun", value: "35 tahun" },
   { label: "> 5 tahun", value: "lebih dari 5 tahun" },
 ];
 

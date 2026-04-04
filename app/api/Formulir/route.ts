@@ -14,7 +14,7 @@ export async function POST(req: Request) {
         Gender: demografi.gender,
         Marriage: demografi.marriage,
         Job: demografi.job,
-        JumlahCase: demografi.jumlahCase,
+        JumlahCase: demografi.jumlahcase,
         Lamakerja: demografi.lamakerja,
         Scores: scores,
       },
