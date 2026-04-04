@@ -1,4 +1,5 @@
 import Tablehasil from "@/components/TableHasil"
+export const dynamic = "force-dynamic"; // 👈 TARUH DI SINI
 
 
 const PageHasil = () => {
