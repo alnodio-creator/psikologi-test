@@ -1,28 +1,27 @@
 import { NextResponse } from "next/server";
-import {prisma} from '@/lib/prisma'
+import { prisma } from "@/lib/prisma";
 
-
-export async function POST (req: Request) {
-    try{
-    const body = await req.json()
-    const {demografi, scores} = body
+export async function POST(req: Request) {
+  try {
+    const body = await req.json();
+    const { demografi, scores } = body;
     console.log("BODY:", body); // 👈 lihat ini di Vercel
 
     const Result = await prisma.testResult.create({
-        data: {
+      data: {
         name: demografi.name,
-        Phone: demografi.phone,
         Age: demografi.age,
         Gender: demografi.gender,
         Marriage: demografi.marriage,
         Job: demografi.job,
-        Scores: scores
-        }
-    })
-    return NextResponse.json(Result)
-    } catch (err) {
-        console.log(err)
-        return NextResponse.json({error: "Gagal Simpan"}, {status: 500})
-    }
-    
+        JumlahCase: demografi.jumlahCase,
+        Lamakerja: demografi.lamakerja,
+        Scores: scores,
+      },
+    });
+    return NextResponse.json(Result);
+  } catch (err) {
+    console.log(err);
+    return NextResponse.json({ error: "Gagal Simpan" }, { status: 500 });
+  }
 }
