@@ -51,10 +51,10 @@ const lamaBekerja = [
 ];
 
 const jumlahCase = [
-  { label: "< 5 kasus", value: "<5" },
-  { label: "5-10 kasus", value: "5-10" },
-  { label: "10-15 kasus", value: "10-15" },
-  { label: "> 20 kasus", value: ">20" },
+  { label: "< 5 kasus", value: "<5 Kasus" },
+  { label: "5-10 kasus", value: "5-10 Kasus" },
+  { label: "10-15 kasus", value: "10-15 Kasus" },
+  { label: "> 20 kasus", value: ">20 Kasus" },
 ];
 
 interface TestLandingProps {
