@@ -14,41 +14,39 @@ import {
   Pie,
   Cell,
 } from "recharts";
-import { CheckCircle2, TrendingUp } from "lucide-react";
+import { CheckCircle2,TrendingUp } from "lucide-react";
 
 interface TestResultsProps {
   scores: number[];
 }
 
-export function HasilTabel({ scores}: TestResultsProps) {
+export function HasilTabel({ scores }: TestResultsProps) {
   const totalScore = scores.reduce((a, b) => a + b, 0);
-  
- 
 
   // Determine score interpretation
   const getInterpretation = (value: number) => {
     if (value <= 22)
       return {
-        level: "Low",
+        level: "Rendah",
         color: "text-destructive",
         bgColor: "bg-destructive/10",
         description:
-          "You may be experiencing significant challenges. Consider seeking support from a mental health professional.",
+          "Anda mungkin sedang mengalami tantangan yang cukup signifikan. Pertimbangkan untuk mencari dukungan dari tenaga profesional kesehatan mental.",
       };
     if (value <= 41)
       return {
-        level: "Moderate",
+        level: "Sedang",
         color: "text-yellow-600",
         bgColor: "bg-yellow-100",
         description:
-          "You show some areas of concern. Building healthy coping strategies could be beneficial.",
+          "Anda menunjukkan beberapa area yang perlu diperhatikan. Mengembangkan strategi coping (penanganan) yang sehat dapat memberikan manfaat.",
       };
     return {
-      level: "High",
+      level: "Tinggi",
       color: "text-green-600",
       bgColor: "bg-green-100",
       description:
-        "You show strong psychological resilience and well-being across multiple areas.",
+        "Anda menunjukkan resiliensi psikologis yang kuat serta kesejahteraan mental yang baik di berbagai aspek.",
     };
   };
 
@@ -109,19 +107,30 @@ export function HasilTabel({ scores}: TestResultsProps) {
         {/* Main Visualization */}
         <Card className="px-6 py-10 shadow-lg border-0 bg-white rounded-xl">
           <h2 className="text-2xl text-center font-bold text-foreground mb-6">
-            Score Distribution
+            Distribusi Nilai Pertanyaan
           </h2>
           <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={chartData} margin={{ top: 10, right: 20, left: 10, bottom: 30 }}>
+            <BarChart
+              data={chartData}
+              margin={{ top: 10, right: 20, left: 10, bottom: 30 }}
+            >
               <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-              <XAxis dataKey="name" stroke="#6b7280" 
-              label={{
-                value: "Pertanyaan",
-                angle: 0,
-                position: "bottom",
-                offset: 10,
-                style: { textAnchor: "middle",fill: "#6b7280", fontSize: 18, fontWeight: "bold" },
-              }}/>
+              <XAxis
+                dataKey="name"
+                stroke="#6b7280"
+                label={{
+                  value: "Pertanyaan",
+                  angle: 0,
+                  position: "bottom",
+                  offset: 10,
+                  style: {
+                    textAnchor: "middle",
+                    fill: "#6b7280",
+                    fontSize: 18,
+                    fontWeight: "bold",
+                  },
+                }}
+              />
               <YAxis
                 stroke="#6b7280"
                 domain={[1, 5]}
@@ -130,7 +139,12 @@ export function HasilTabel({ scores}: TestResultsProps) {
                   value: "Score Pertanyaan",
                   angle: -90,
                   position: "insideLeft",
-                  style: { textAnchor: "middle",fill: "#6b7280", fontSize: 15, fontWeight: "bold" },
+                  style: {
+                    textAnchor: "middle",
+                    fill: "#6b7280",
+                    fontSize: 15,
+                    fontWeight: "bold",
+                  },
                 }}
               />
               <Tooltip
@@ -163,7 +177,7 @@ export function HasilTabel({ scores}: TestResultsProps) {
           <Card className="p-6 shadow-lg border-0 bg-white rounded-xl">
             <h3 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
               <TrendingUp className="w-5 h-5 text-primary" />
-              Category Breakdown
+              Rincian Kategori
             </h3>
             <div className="space-y-3">
               {categoryScores.map((category, index) => (
@@ -185,10 +199,19 @@ export function HasilTabel({ scores}: TestResultsProps) {
                 </div>
               ))}
             </div>
+            <h3 className="text-sm text-muted-foreground mt-4 italic">
+              <b>* Burnout:</b> Kelelahan fisik dan mental akibat stres berkepanjangan,
+              biasanya karena pekerjaan.<br />
+              <b>* Secondary Traumatic Stress:</b> Stres yang dialami akibat terpapar
+              pengalaman traumatis orang lain.
+            </h3>
           </Card>
 
           {/* Pie Chart */}
           <Card className="p-6 shadow-lg border-0 bg-white rounded-xl flex items-center justify-center">
+            <h3 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
+              Distribusi Kategori
+            </h3>
             <ResponsiveContainer width="100%" height={250}>
               <PieChart>
                 <Pie
@@ -221,7 +244,7 @@ export function HasilTabel({ scores}: TestResultsProps) {
               {BurnoutLevel.level}
             </p>
             <p className="text-xs text-foreground/70 mt-2">
-              Based on your responses
+              Berdasarkan dari jawaban Anda
             </p>
           </Card>
 
@@ -236,7 +259,7 @@ export function HasilTabel({ scores}: TestResultsProps) {
               {STSLevel.level}
             </p>
             <p className="text-xs text-foreground/70 mt-2">
-              Based on your responses
+              Berdasarkan dari jawaban Anda
             </p>
           </Card>
         </div>
@@ -247,15 +270,15 @@ export function HasilTabel({ scores}: TestResultsProps) {
         >
           <div className="space-y-4">
             <h3 className="text-xl font-bold text-foreground">
-              What This Means
+              Interpretasi Hasil:
             </h3>
             <p className="text-base text-foreground leading-relaxed">
               {interpretation.description}
             </p>
             <div className="pt-2 border-t border-border/50">
               <p className="text-xs text-muted-foreground italic">
-                * This assessment is for self-reflection only and should not
-                replace professional mental health evaluation.
+                * Penilaian ini hanya untuk refleksi diri dan tidak dimaksudkan
+                untuk menggantikan evaluasi kesehatan mental oleh profesional.
               </p>
             </div>
           </div>
@@ -264,7 +287,7 @@ export function HasilTabel({ scores}: TestResultsProps) {
         {/* Action Buttons */}
         <div className="flex gap-3 justify-center">
           <Button variant="outline" size="lg" className="px-8">
-            Share Results
+            Bagikan Hasil
           </Button>
         </div>
       </div>

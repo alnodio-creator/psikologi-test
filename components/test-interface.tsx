@@ -209,7 +209,7 @@ export function TestInterface({ onComplete, initialScores }: TestInterfaceProps)
             {/* Likert Scale */}
             <div className="space-y-3">
               <p className="text-sm font-medium text-muted-foreground text-center">
-                Rate your response on a scale from 1 to 5
+                Nilai jawaban Anda dalam skala 1 sampai 5
               </p>
               <div className="flex gap-10 justify-center">
                 {valuepertanyaan.map((value,index) => (

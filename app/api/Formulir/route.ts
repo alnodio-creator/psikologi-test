@@ -25,3 +25,20 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Gagal Simpan" }, { status: 500 });
   }
 }
+
+
+export async function GET() {
+  try{
+    const result = await prisma.testResult.findMany({
+      orderBy: {
+        CreatedAtt: "desc",
+      },
+    });
+    return NextResponse.json(result);
+  }catch(err){
+    console.error("ERROR GET RESULT:", err);
+    return NextResponse.json({ error: "Gagal mengambil data" }, { status: 500
+    })
+  }
+}
+

@@ -32,19 +32,10 @@ const StatusMarriages = [
   "Cerai Mati",
 ];
 
-const UsiaResponden = [
-  "< 26 tahun",
-  "26 - 35 tahun",
-  "36 - 45 tahun",
-  "46 - 55 tahun",
-  "> 56 Tahun",
-];
-
 const jenisJabatan = [
   { label: "Advokat", value: "advokat" },
   { label: "Konselor hukum", value: "konselor hukum" },
   { label: "Paralegal", value: "paralegal" },
-  { label: "Mediator", value: "mediator" },
   { label: "Konselor", value: "konselor" },
   { label: "Psikolog Klinis", value: "psikolog klinis" },
   { label: "Manajer Kasus", value: "manajer kasus" },
@@ -159,26 +150,16 @@ const DemografiForm = ({ onStart }: TestLandingProps) => {
                     </Select>
                   </Field>
                   <Field>
-                    <FieldLabel>Usia Anda</FieldLabel>
-                    <Select
-                      required
+                    <FieldLabel htmlFor="checkout-7j9-card-name-43j">
+                      Usia Anda
+                    </FieldLabel>
+                    <Input
                       value={age}
-                      onValueChange={(value) => setAge(value)}
-                    >
-                      <SelectTrigger className="w-full">
-                        <SelectValue placeholder="Usia Anda" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectGroup className="z-900">
-                          <SelectLabel>Pilih Usia Anda</SelectLabel>
-                          {UsiaResponden.map((value, index) => (
-                            <SelectItem key={index} value={value}>
-                              {value}
-                            </SelectItem>
-                          ))}
-                        </SelectGroup>
-                      </SelectContent>
-                    </Select>
+                      onChange={(e) => setAge(e.target.value)}
+                      id="checkout-7j9-card-name-43j"
+                      placeholder="Masukkan Usia Anda"
+                      required
+                    />
                   </Field>
                   <Field>
                     <FieldLabel>Status Pernikahan</FieldLabel>

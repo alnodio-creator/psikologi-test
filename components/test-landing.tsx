@@ -52,7 +52,7 @@ export function TestLanding({ onStart }: TestLandingProps) {
             size="lg"
             className="bg-linear-to-r from-primary to-accent hover:shadow-lg transition-all duration-300 text-white px-8 py-6 text-lg rounded-lg"
           >
-            Mulai Assessment 
+            Mulai Assessmen 
           </Button>
         </div>
 
