@@ -29,25 +29,31 @@ export function TestResults({ scores, onRetake }: TestResultsProps) {
     if (value <= 22)
       return {
         level: "Rendah",
-        color: "text-destructive",
-        bgColor: "bg-destructive/10",
-        description:
-          "Anda mungkin sedang mengalami tantangan yang cukup signifikan. Pertimbangkan untuk mencari dukungan dari tenaga profesional kesehatan mental.",
+        color: "text-green-600",
+        bgColor: "bg-green-100",
+        descriptionBurnout:
+          "Anda masih mampu terlibat dalam pekerjaan dengan baik, kelelahan masih dalam batas wajar dan tindak mengganggu fungsi sehari-hari.",
+        descriptionSTS:
+          "Anda masih mampu menjaga empati dan meregulasi paparan trauma secara efektif.",
       };
     if (value <= 41)
       return {
         level: "Sedang",
         color: "text-yellow-600",
         bgColor: "bg-yellow-100",
-        description:
-          "Anda menunjukkan beberapa area yang perlu diperhatikan. Mengembangkan strategi coping (penanganan) yang sehat dapat memberikan manfaat.",
+        descriptionBurnout:
+          "Anda mulai merasakan transisi kelelahan kronis dan perlu untuk melakukan penanganan preventif.",
+        descriptionSTS:
+          "Anda mulai menginternalisasi pengalaman traumatis, namun masih dalam batas terkendali.",
       };
     return {
       level: "Tinggi",
-      color: "text-green-600",
-      bgColor: "bg-green-100",
-      description:
-        "Anda menunjukkan resiliensi psikologis yang kuat serta kesejahteraan mental yang baik di berbagai aspek.",
+      color: "text-destructive",
+      bgColor: "bg-destructive/10",
+      descriptionBurnout:
+        "Anda mengalami kelelahan kronis yang berisiko mempengaruhi kualitas kinerja dan kesejahteraan psikologis.",
+      descriptionSTS:
+        "Anda mengalami respon trauma tidak langsung yang berdampak pada fungsi emosional dan psikologis.",
     };
   };
 
@@ -103,7 +109,7 @@ export function TestResults({ scores, onRetake }: TestResultsProps) {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-4 py-8 bg-linear-to-r from-background via-blue-50 to-blue-100">
-      <div className="w-full max-w-4xl space-y-8 animate-fadeInUp">
+      <div className="w-full max-w-5xl space-y-8 animate-fadeInUp">
         {/* Header */}
         <div className="text-center space-y-4">
           <div className="flex justify-center">
@@ -112,10 +118,10 @@ export function TestResults({ scores, onRetake }: TestResultsProps) {
             </div>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-foreground">
-            CARE 129 <br /> Hasil Asesment
+            CARE 129 <br /> Hasil Asesmen
           </h1>
           <p className="text-lg text-muted-foreground">
-            Berikut adalah hasil dari assesmen yang telah Anda lakukan
+            Berikut adalah hasil dari asesmen yang telah Anda lakukan
           </p>
         </div>
 
@@ -151,7 +157,7 @@ export function TestResults({ scores, onRetake }: TestResultsProps) {
                 domain={[1, 5]}
                 ticks={[1, 2, 3, 4, 5]}
                 label={{
-                  value: "Score Pertanyaan",
+                  value: "Skor Pertanyaan",
                   angle: -90,
                   position: "insideLeft",
                   style: {
@@ -215,10 +221,11 @@ export function TestResults({ scores, onRetake }: TestResultsProps) {
               ))}
             </div>
             <h3 className="text-sm text-muted-foreground mt-4 italic">
-              <b>* Burnout:</b> Kelelahan fisik dan mental akibat stres berkepanjangan,
-              biasanya karena pekerjaan.<br />
-              <b>* Secondary Traumatic Stress:</b> Stres yang dialami akibat terpapar
-              pengalaman traumatis orang lain.
+              <b>* Burnout:</b> Kelelahan fisik dan mental akibat stres
+              berkepanjangan, biasanya karena pekerjaan.
+              <br />
+              <b>* Secondary Traumatic Stress:</b> Stres yang dialami akibat
+              terpapar pengalaman traumatis orang lain.
             </h3>
           </Card>
 
@@ -228,13 +235,33 @@ export function TestResults({ scores, onRetake }: TestResultsProps) {
               Distribusi Kategori
             </h3>
             <ResponsiveContainer width="100%" height={250}>
-              <PieChart>
+              <PieChart margin={{ top: 20, right: 40, bottom: 20, left: 40 }}>
                 <Pie
                   data={categoryScores}
                   cx="50%"
                   cy="50%"
-                  labelLine={false}
-                  label={({ name, value }) => `${name}: ${value}`}
+                  labelLine={true}
+                  label={({ cx, cy, midAngle, outerRadius, index }) => {
+                    const RADIAN = Math.PI / 180;
+                    const radius = outerRadius + 25; // kasih jarak keluar
+                    const x = cx + radius * Math.cos(-midAngle! * RADIAN);
+                    const y = cy + radius * Math.sin(-midAngle!* RADIAN);
+
+                    return (
+                      <text
+                        x={x}
+                        y={y}
+                        fill="#333"
+                        textAnchor={x > cx ? "start" : "end"}
+                        dominantBaseline="central"
+                        fontSize={12}
+                        fontWeight="bold"
+                      >
+                        {categoryScores[index].name}:{" "}
+                        {categoryScores[index].value}
+                      </text>
+                    );
+                  }}
                   outerRadius={80}
                   fill="#8884d8"
                   dataKey="value"
@@ -253,7 +280,7 @@ export function TestResults({ scores, onRetake }: TestResultsProps) {
             className={`p-6 shadow-lg border-0 rounded-xl text-center ${BurnoutLevel.bgColor}`}
           >
             <p className="text-sm font-semibold text-muted-foreground mb-2">
-              Burnout Score
+              Skor Burnout
             </p>
             <p className={`text-5xl font-bold ${BurnoutLevel.color}`}>
               {BurnoutLevel.level}
@@ -268,7 +295,7 @@ export function TestResults({ scores, onRetake }: TestResultsProps) {
             className={`p-6 shadow-lg border-0 rounded-xl text-center ${STSLevel.bgColor}`}
           >
             <p className="text-sm font-semibold text-muted-foreground mb-2">
-              Secondary Traumatic Stress Score
+              Skor Secondary Traumatic Stress
             </p>
             <p className={`text-5xl font-bold ${STSLevel.color}`}>
               {STSLevel.level}
@@ -285,10 +312,28 @@ export function TestResults({ scores, onRetake }: TestResultsProps) {
         >
           <div className="space-y-4">
             <h3 className="text-xl font-bold text-foreground">
-              Interpretasi Hasil:
+              Interpretasi Hasil <i>Burnout</i> : {BurnoutLevel.level}
             </h3>
             <p className="text-base text-foreground leading-relaxed">
-              {interpretation.description}
+              {interpretation.descriptionBurnout}
+            </p>
+            <div className="pt-2 border-t border-border/50">
+              <p className="text-xs text-muted-foreground italic">
+                * Penilaian ini hanya untuk refleksi diri dan tidak dimaksudkan
+                untuk menggantikan evaluasi kesehatan mental oleh profesional.
+              </p>
+            </div>
+          </div>
+        </Card>
+        <Card
+          className={`p-8 shadow-lg border-0 rounded-xl ${interpretation.bgColor}`}
+        >
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-foreground">
+              Interpretasi Hasil <i>Secondary Traumatic Stress</i> : {STSLevel.level}
+            </h3>
+            <p className="text-base text-foreground leading-relaxed">
+              {interpretation.descriptionSTS}
             </p>
             <div className="pt-2 border-t border-border/50">
               <p className="text-xs text-muted-foreground italic">

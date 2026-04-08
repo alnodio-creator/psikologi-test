@@ -188,10 +188,10 @@ export function TestInterface({ onComplete, initialScores }: TestInterfaceProps)
           {/* Progress Text */}
           <div className="flex justify-between items-center">
             <h2 className="text-sm font-semibold text-muted-foreground">
-              Question {currentQuestion + 1} of {QUESTIONS.length}
+                Pertanyaan {currentQuestion + 1} dari {QUESTIONS.length}
             </h2>
             <h2 className="text-xs text-muted-foreground font-medium">
-              {(progress)}% Complete
+              {(progress)}% Selesai
             </h2>
           </div>
         </div>
@@ -248,7 +248,7 @@ export function TestInterface({ onComplete, initialScores }: TestInterfaceProps)
             className="gap-2"
           >
             <ChevronLeft className="w-4 h-4" />
-            Previous
+            Sebelum
           </Button>
 
           {currentQuestion < QUESTIONS.length - 1 ? (
@@ -258,7 +258,7 @@ export function TestInterface({ onComplete, initialScores }: TestInterfaceProps)
               size="lg"
               className="bg-linear-to-r from-primary to-accent hover:shadow-lg text-white gap-2"
             >
-              Next
+              Selanjutnya
               <ChevronRight className="w-4 h-4" />
             </Button>
           ) : (
@@ -268,7 +268,7 @@ export function TestInterface({ onComplete, initialScores }: TestInterfaceProps)
               size="lg"
               className="bg-linear-to-r from-primary to-accent hover:shadow-lg text-white"
             >
-              Calculate Result
+              Kalkulasikan Hasil
             </Button>
           )}
         </div>
