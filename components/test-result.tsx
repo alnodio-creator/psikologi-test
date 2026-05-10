@@ -308,32 +308,32 @@ export function TestResults({ scores, onRetake }: TestResultsProps) {
 
         {/* Interpretation Section */}
         <Card
-          className={`p-8 shadow-lg border-0 rounded-xl ${interpretation.bgColor}`}
+          className={`p-8 shadow-lg border-0 rounded-xl ${BurnoutLevel.bgColor}`}
         >
           <div className="space-y-4">
             <h3 className="text-xl font-bold text-foreground">
               Interpretasi Hasil <i>Burnout</i> : {BurnoutLevel.level}
             </h3>
             <p className="text-base text-foreground leading-relaxed">
-              {interpretation.descriptionBurnout}
+              {BurnoutLevel.descriptionBurnout}
             </p>
             <div className="pt-2 border-t border-border/50">
               <p className="text-xs text-muted-foreground italic">
                 * Penilaian ini hanya untuk refleksi diri dan tidak dimaksudkan
-                untuk menggantikan evaluasi kesehatan mental oleh profesional.
+                untuk menggantikan evaluasi kesehatan mental oleh profesional cok.
               </p>
             </div>
           </div>
         </Card>
         <Card
-          className={`p-8 shadow-lg border-0 rounded-xl ${interpretation.bgColor}`}
+          className={`p-8 shadow-lg border-0 rounded-xl ${STSLevel.bgColor}`}
         >
           <div className="space-y-4">
             <h3 className="text-xl font-bold text-foreground">
               Interpretasi Hasil <i>Secondary Traumatic Stress</i> : {STSLevel.level}
             </h3>
             <p className="text-base text-foreground leading-relaxed">
-              {interpretation.descriptionSTS}
+              {STSLevel.descriptionSTS}
             </p>
             <div className="pt-2 border-t border-border/50">
               <p className="text-xs text-muted-foreground italic">
